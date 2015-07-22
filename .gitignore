@@ -1,0 +1,9 @@
+Library/
+NuiDatabase/
+Assets/KinectScripts/
+Assets/Resources/
+
+*.meta
+*.csproj
+*.sln
+Assets/
