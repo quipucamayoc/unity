@@ -22,8 +22,14 @@ public class SphereMove : MonoBehaviour {
 	
 	// start time of data saving to csv file
 	private float saveStartTime = -1f;
+
+	public Vector3 initPosition;
 	
-	
+	void Start()
+	{
+		initPosition = GetComponentInParent<Transform> ().position;
+	}
+
 	void Update () 
 	{
 		if(isSaving)
@@ -74,7 +80,7 @@ public class SphereMove : MonoBehaviour {
 					}
 				}
 			}
-			transform.position = outputPosition * 4;
+			transform.position = (outputPosition * 4) + initPosition;
 		}
 		
 
