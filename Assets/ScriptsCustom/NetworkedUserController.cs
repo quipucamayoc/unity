@@ -70,8 +70,7 @@ public class NetworkedUserController : MonoBehaviour
 	
 	void Start () 
 	{
-		//TODO: Assign player index
-
+        userID = KinectManager.Instance ? KinectManager.Instance.GetUserIdByIndex(playerIndex) : 0;
 
 		//store bones in a list for easier access
 		bones = new GameObject[] {
@@ -95,11 +94,6 @@ public class NetworkedUserController : MonoBehaviour
 			Knee_Right,
 			Ankle_Right,
 			Foot_Right,
-			Spine_Shoulder,
-			Hand_Tip_Left,
-			Thumb_Left,
-			Hand_Tip_Right,
-			Thumb_Right
 		};
 		
 		// array holding the skeleton lines
@@ -117,8 +111,6 @@ public class NetworkedUserController : MonoBehaviour
 				lines[i].transform.parent = transform;
 			}
 		}
-
-        userID = KinectManager.Instance ? KinectManager.Instance.GetUserIdByIndex(playerIndex) : 0;
 		
 		//initialPosition = transform.position;
 		//initialRotation = transform.rotation;
@@ -132,21 +124,11 @@ public class NetworkedUserController : MonoBehaviour
 		if(manager.GetUserIdByIndex(playerIndex) != userID || manager.GetUserIdByIndex(playerIndex) == -1)
         {
             Destroy(gameObject);
+            CharacterManager.Instance.numCharacters --;
         }
 
 		if(userID <= 0)
 		{
-			// reset the pointman position and rotation
-			//			if(transform.position != initialPosition)
-			//			{
-			//				transform.position = initialPosition;
-			//			}
-			//			
-			//			if(transform.rotation != initialRotation)
-			//			{
-			//				transform.rotation = initialRotation;
-			//			}
-			
 			for(int i = 0; i < bones.Length; i++) 
 			{
 				bones[i].gameObject.SetActive(true);
