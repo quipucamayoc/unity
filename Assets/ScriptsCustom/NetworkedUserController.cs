@@ -62,8 +62,6 @@ public class NetworkedUserController : MonoBehaviour
 	private LineRenderer lineFLeft;
 	private LineRenderer lineFRight;
 	
-	private Vector3 initialPosition;
-	private Quaternion initialRotation;
 	private Vector3 initialPosOffset = Vector3.zero;
 	private Int64 initialPosUserID = 0;
 	
