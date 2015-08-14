@@ -29,7 +29,7 @@ public class CharacterManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        numCharacters = KinectManager.Instance.GetUsersCount();
+        numCharacters = 0;
         characters = new List<GameObject>();
         instance = this;
     }
