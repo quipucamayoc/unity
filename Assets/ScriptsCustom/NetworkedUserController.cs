@@ -119,11 +119,13 @@ public class NetworkedUserController : MonoBehaviour
 	void Update () 
 	{
 		KinectManager manager = KinectManager.Instance;
-		if(manager.GetUserIdByIndex(playerIndex) != userID || manager.GetUserIdByIndex(playerIndex) == -1)
-        {
-            Destroy(gameObject);
-            CharacterManager.Instance.numCharacters --;
-        }
+//		if(manager.GetUserIdByIndex(playerIndex) != userID || manager.GetUserIdByIndex(playerIndex) == -1)
+//        {
+//            Destroy(gameObject);
+//            CharacterManager.Instance.numCharacters --;
+//        }
+
+        userID = KinectManager.Instance ? KinectManager.Instance.GetUserIdByIndex(playerIndex) : 0;
 
 		if(userID <= 0)
 		{
