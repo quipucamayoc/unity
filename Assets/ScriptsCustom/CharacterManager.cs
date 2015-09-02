@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 //using Windows.Kinect;
 
 using System;
@@ -42,9 +43,15 @@ public class CharacterManager : MonoBehaviour
         if(numCharacters < manager.GetUsersCount())
         {
             GameObject character = Instantiate<GameObject>(playerPrefab);
+            //object characterNetwork = Network.Instantiate(playerPrefab, manager.transform.position, manager.transform.rotation, 0);
             character.GetComponent<NetworkedUserController>().playerIndex = manager.GetUsersCount() - 1;
             characters.Add(character);
-            
+            NetworkServer.Spawn(character);
+            foreach(Transform child in character.transform)
+            {
+                NetworkServer.Spawn(child.gameObject);
+            }
+
             numCharacters = manager.GetUsersCount();
             
         }
